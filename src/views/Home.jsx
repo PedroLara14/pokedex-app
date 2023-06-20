@@ -28,35 +28,35 @@ const Home = () => {
   return (
     <div className="flex flex-col justify-center h-screen max-h-screen ">
       <div className="flex justify-center">
-        <img src="/poke_img.png" alt="pokedex" />
+        <img src="/poke_img.png" className="pokedex_img" alt="pokedex" />
       </div>
       <div className="text-center">
-        <h1 className="text-red-400  text-4xl font-bold">Hi trainer!</h1>
-        <p className="">Type your name to start</p>
+        <h1 className="text-red-600 mb-4  text-4xl font-bold">Hi trainer!</h1>
+        <p>
+          to see the information of the pokemon tell me your trainer name.
+        </p>
       </div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-row justify-center items-center mt-8 gap-3"
       >
         <input
-          className="shadow-md border border-black p-2 rounded"
+          className="trainer_input"
           type="text"
           value={nameValue}
           onChange={handleChange}
+          placeholder='Enter your trainer name.'
         />
-        <button className="bg-red-400 rounded text-white font-bold p-2" type="submit">
-          start
+        <button className="input_btn" type="submit">
+          Let Start
         </button>
       </form>
-      {nameError && <p className="text-red-400 text-center">{nameError}</p>}
+      {nameError && <p className="text-red-600 text-center mt-4">{nameError}</p>}
 
       {user && <Navigate to="/pokedex" />}
-      <div className="max-w-full ">
-        <div className=" bg-red-500 z-0 h-12"></div>
-        <div className=" bg-black z-0 h-8"></div>
-        <div className="bg-white rounded-full z-1 bottom-14 relative h-14 w-14 border-solid border-4 border-black flex items-center justify-center m-auto m-0 ">
-          <div className="bg-black rounded-full h-8 w-8 "></div>
-        </div>
+      <div className="w-full h-[80px] bg-red-600 absolute bottom-0">
+        <div className="w-full h-[35px] bg-[#0c0c0c] absolute bottom-0"></div>
+        <div className="circle"></div>
       </div>
     </div>
   );

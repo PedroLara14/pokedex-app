@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import '../style.css';
 
 const PokemonDetail = () => {
@@ -21,15 +22,77 @@ const PokemonDetail = () => {
 
     loadData();
   });
+
+  
+
   return (
     <main>
       {pokemonInfo ? (
-        <section className="principal">
-          <img
-            src={pokemonInfo.sprites.front_default}
-            alt={`imagen del pokemon ${pokemonInfo.name}`}
-          />
-          <p className="pokemonId">#{pokemonInfo.id}</p>
+        <div className="pokemon-info-container">
+          <a className="go-to-pokemon-list" href="/#pokemon/">
+            {'<'}
+          </a>
+          <article className="card-info">
+            <header className="header-card-info">
+              <button className="preview-next-pokemon-info">{'<'}</button>
+              <img
+                src={pokemonInfo.sprites.other['official-artwork'].front_default}
+                alt={`imagen del pokemon ${pokemonInfo.name}`}
+                className="srite-card-info"
+              />
+              <button className="preview-next-pokemon-info">{'>'}</button>
+            </header>
+            <div className="body-card-info">
+              <section className="general-info-card-info">
+                <div className="id-general-info">#{pokemonInfo.id}</div>
+                <hr className="hr-card-info" />
+                <h1 className="name-pokemon-card-info">{pokemonInfo.name}</h1>
+                <ul className="height-weight-container">
+                  <li className="height-weight">
+                    <span className="span-height-weight">Weight</span>
+                    {pokemonInfo.weight}
+                  </li>
+                  <li className="height-weight">
+                    <span className="span-height-weight">Height</span>
+                    {pokemonInfo.height}
+                  </li>
+                </ul>
+                <ul className="type-habilities-container">
+                  <li className="text-center">
+                    <span className="span-type-habilities">Type</span>
+                    <div className="type-habilities-flex">
+                      <div className="type-habilitie">
+                        {pokemonInfo.types[0].type.name}
+                      </div>
+                    </div>
+                  </li>
+                  <li className="text-center">
+                    <span className="span-type-habilities">Abilites</span>
+                    <div className="type-habilities-flex">
+                      <div className="type-habilitie ability-card-info">
+                        {pokemonInfo.abilities[0].ability.name}
+                      </div>
+                      <div className="type-habilitie ability-card-info">
+                        {pokemonInfo.abilities[1].ability.name}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+              <section></section>
+            </div>
+          </article>
+          <article className="movement-container">
+            <hr className="separator-movement" />
+            <h2 className="movement-title">Movements </h2>
+            <div className="movement-tag-container">
+              {pokemonInfo?.moves.map((move) => (
+                <p className="movement-tag">"Insertar Ataque"</p>
+              ))}
+            </div>
+          </article>
+
+          {/* <p className="pokemonId">#{pokemonInfo.id}</p>
           <h2 className="pokemonName">{pokemonInfo.name}</h2>
           <section className="measures">
             <div className="weight">
@@ -101,8 +164,8 @@ const PokemonDetail = () => {
                 {pokemonInfo.stats[5].base_stat}/180
               </p>
             </div>
-          </div>
-        </section>
+          </div> */}
+        </div>
       ) : (
         <p>la pagina esta cargando ...</p>
       )}

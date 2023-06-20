@@ -18,41 +18,61 @@ const PokemonCard = ({ pokemon }) => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="drop-shadow-lg border-2 text-center h-max w-96 rounded-xl">
+    <div className="pokemon-card">
       <Link to={`/pokedex/${pokemonInfo.id}`}>
-        <img
-          className="w-80"
-          src={pokemonInfo.sprites.front_default}
-          alt={`imagen del pokemon ${pokemonInfo.name}`}
-        />
-        <h2 className="text-2xl font-bold">{pokemonInfo.name}</h2>
-        <p>
-          {pokemonInfo.types[0].type.name}
-          {pokemonInfo.types[1] && ` / ${pokemonInfo.types[1].type.name}`}
-        </p>
-        <span>tipo </span>
-        <hr />
-        <div className="flex flex-wrap">
-          <p className="mx-12 my-4">
-            <span className="font-bold ">HP </span>
-            <br />
-            {pokemonInfo.stats[0].base_stat}
+        <header className="header-pokemon-card">
+          <img
+            className="img-pokemon-card"
+            src={pokemonInfo.sprites.other['official-artwork'].front_default}
+            alt={`imagen del pokemon ${pokemonInfo.name}`}
+          />
+        </header>
+        <div>
+          <h2 className="pokemon-card-name">{pokemonInfo.name}</h2>
+          <span className="pokemon-card-type-text">Type</span>
+          <p className="pokemon-card-type">
+            {pokemonInfo.types[0].type.name}
+            {pokemonInfo.types[1] && ` / ${pokemonInfo.types[1].type.name}`}
           </p>
-          <p className="mx-12 my-4 pl-10">
-            <span className="font-bold">Attack </span>
-            <br />
-            {pokemonInfo.stats[1].base_stat}
-          </p>
-          <p className="mx-12 my-4">
-            <span className="font-bold">Defense </span>
-            <br />
-            {pokemonInfo.stats[2].base_stat}
-          </p>
-          <p className="mx-12 my-4">
-            <span className="font-bold">Speed </span>
-            <br />
-            {pokemonInfo.stats[5].base_stat}
-          </p>
+          <hr className="pokemon-card-hr" />
+          <ul className="pokemon-card-stats-ul">
+            <li className="pokemon-card-stats-container">
+              hp
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[0].base_stat}
+              </span>
+            </li>
+            <li className="pokemon-card-stats-container">
+              attack
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[1].base_stat}
+              </span>
+            </li>
+            <li className="pokemon-card-stats-container">
+              defense
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[2].base_stat}
+              </span>
+            </li>
+            <li className="pokemon-card-stats-container">
+              special attack
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[3].base_stat}
+              </span>
+            </li>
+            <li className="pokemon-card-stats-container">
+              special defense
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[4].base_stat}
+              </span>
+            </li>
+            <li className="pokemon-card-stats-container">
+              speed
+              <span className="pokemon-card-stats-number">
+                {pokemonInfo.stats[5].base_stat}
+              </span>
+            </li>
+          </ul>
         </div>
       </Link>
     </div>
