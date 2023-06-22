@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import '../style.css';
 
 const PokemonDetail = () => {
@@ -29,7 +28,7 @@ const PokemonDetail = () => {
     <main>
       {pokemonInfo ? (
         <div className="pokemon-info-container">
-          <a className="go-to-pokemon-list" href="/#pokemon/">
+          <a className="go-to-pokemon-list" href="/pokedex">
             {'<'}
           </a>
           <article className="card-info">
@@ -86,8 +85,10 @@ const PokemonDetail = () => {
             <hr className="separator-movement" />
             <h2 className="movement-title">Movements </h2>
             <div className="movement-tag-container">
-              {pokemonInfo?.moves.map((move) => (
-                <p className="movement-tag">"Insertar Ataque"</p>
+              {pokemonInfo?.moves.map((movesInfo, index) => (
+                <p className="movement-tag" key={index}>
+                  {movesInfo.move.name}
+                </p>
               ))}
             </div>
           </article>

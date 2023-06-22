@@ -80,7 +80,7 @@ main {
 }
 .go-to-pokemon-list{
   position: absolute;
-    top: 140px;
+    top: 120px;
     left: 20px;
     width: 40px;
     aspect-ratio: 1;
@@ -88,7 +88,7 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #0c0c0c22;
-    border-radius: 50%;
+    border-radius: 100%;
     font-weight: 500;
     font-size: 20px;
     color: #fff;
